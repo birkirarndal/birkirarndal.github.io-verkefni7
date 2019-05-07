@@ -62,12 +62,21 @@ fetch(url)
             }
 
             // function sem lagar formatið á dateinu sem er gefið af flatpickr.
-            // breytir úr dd/mm/yy yfir í yy-mm-dd
+            // breytir úr d/m/yy yfir í yy-mm-dd
             function dateFormat(date) {
                 let dateSplit = date.split('/');
-               
-                return dateSplit[2]+"-"+dateSplit[1]+"-"+dateSplit[0];
-                
+                if (dateSplit[0].length < 2 && dateSplit[1].length < 2){
+                    return dateSplit[2]+"-0"+dateSplit[1]+"-0"+dateSplit[0];
+                }
+                else if (dateSplit[0].length < 2) {
+                    return dateSplit[2]+"-"+dateSplit[1]+"-0"+dateSplit[0];
+                }
+                else if (dateSplit[1].length < 2) {
+                    return dateSplit[2]+"-0"+dateSplit[1]+"-"+dateSplit[0];
+                }
+                else {
+                    return dateSplit[2]+"-"+dateSplit[1]+"-"+dateSplit[0];
+                }
             }
 
             // býr til dagatal
@@ -84,12 +93,13 @@ fetch(url)
         });
 
             function dateDisplay(after, before) {
-                let afterArray = after.toLocaleString().split(",");
-                let beforeArray = before.toLocaleString().split(",");
+                let afterArray = (after.getDate() +"/"+ (after.getMonth() +1) +"/"+ after.getFullYear());
+                let beforeArray = (before.getDate() +"/"+ (before.getMonth() + 1) +"/"+ before.getFullYear());
                 // fer í gegnum hvert div element í cons arrayinu
                 cons.forEach(concert => {
                     // finnur hvaða element er utan tímabilinu sem notandi valdi og felur það.
-                    if(((concert.dataset.Date >= dateFormat(afterArray[0])) && (concert.dataset.Date <= dateFormat(beforeArray[0]))) || (dateFormat(afterArray[0]) === undefined && dateFormat(beforeArray[0] === undefined))) {
+                    
+                    if(((concert.dataset.Date >= dateFormat(afterArray)) && (concert.dataset.Date <= dateFormat(beforeArray))) || (dateFormat(afterArray) === undefined && dateFormat(beforeArray) === undefined)) {
                         concert.classList.remove('hide');
                     }
                     else {
