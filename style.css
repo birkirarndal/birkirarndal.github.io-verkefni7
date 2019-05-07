@@ -1,0 +1,30 @@
+body {
+    max-width: 60em;
+    margin: 0 auto;
+    text-align: center;
+}
+
+main {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1em;
+    text-align: center;
+}
+
+main div {
+    display: inline-block;
+    text-align: justify;
+}
+.search {
+    
+    width: 100%;
+}
+.date {
+    display: block;
+    width: 16%;
+}
+
+.hide {
+    display: none;
+}
