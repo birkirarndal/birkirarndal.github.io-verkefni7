@@ -62,7 +62,7 @@ fetch(url)
             }
 
             // function sem lagar formatið á dateinu sem er gefið af flatpickr.
-            // breytir úr d/m/yy yfir í yy-mm-dd
+            // breytir úr d/m/yyyy yfir í yyyy-mm-dd
             function dateFormat(date) {
                 let dateSplit = date.split('/');
                 if (dateSplit[0].length < 2 && dateSplit[1].length < 2){
