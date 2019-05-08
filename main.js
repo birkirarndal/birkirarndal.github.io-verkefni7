@@ -93,13 +93,13 @@ fetch(url)
         });
 
             function dateDisplay(after, before) {
-                let afterArray = (after.getDate() +"/"+ (after.getMonth() +1) +"/"+ after.getFullYear());
-                let beforeArray = (before.getDate() +"/"+ (before.getMonth() + 1) +"/"+ before.getFullYear());
+                let afterdate = (after.getDate() +"/"+ (after.getMonth() +1) +"/"+ after.getFullYear());
+                let beforedate = (before.getDate() +"/"+ (before.getMonth() + 1) +"/"+ before.getFullYear());
                 // fer í gegnum hvert div element í cons arrayinu
                 cons.forEach(concert => {
                     // finnur hvaða element er utan tímabilinu sem notandi valdi og felur það.
                     
-                    if(((concert.dataset.Date >= dateFormat(afterArray)) && (concert.dataset.Date <= dateFormat(beforeArray))) || (dateFormat(afterArray) === undefined && dateFormat(beforeArray) === undefined)) {
+                    if(((concert.dataset.Date >= dateFormat(afterdate)) && (concert.dataset.Date <= dateFormat(beforedate))) || (dateFormat(afterdate) === undefined && dateFormat(beforedate) === undefined)) {
                         concert.classList.remove('hide');
                     }
                     else {
